@@ -58,7 +58,7 @@ class TimeOverlapCalculator
     }
 
     /**
-     * Returns array of non overlapped time slots
+     * Create an array of non overlapped time slots
      * 
      * @param TimeSlotInterface          $baseTimeSlot
      * @param TimeSlotInterface[]        $overlappingTimeSlots

@@ -1,5 +1,5 @@
 # Time overlap calculator
-=======
+
 A lightweight library that helps to work with date/time overlapping.
 
 ##Usage
@@ -23,9 +23,9 @@ $overlappingTimeSlot = new TimeSlot(
 ```
 ### Check if two periods overlap
 ```
-$isPeriodsOverlap = $calculator->isOverlap($baseTimeSlot, $overlappingTimeSlot); //will return true
+$isOverlap = $calculator->isOverlap($baseTimeSlot, $overlappingTimeSlot); //will return true
 ```
-### Calculate the size of overlapping and convert result into given time unit (seconds by default)
+### Calculate size of overlapping and convert result into given time unit (seconds by default)
 ```
 $resultInSeconds = $calculator->calculateOverlap($baseTimeSlot, $overlappingTimeSlot); //14400
 $resultInMinutes = $calculator->calculateOverlap($baseTimeSlot, $overlappingTimeSlot, TimeOverlapCalculator::TIME_UNIT_MINUTE); //240
@@ -42,6 +42,8 @@ $freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
     $timeSlotGenerator
 );
 ```
-TimeSlotGenerator is used to generate new time slots that appear after exclusion all overlapping time slots from base time slot.
+TimeSlotGenerator is used to generate new time slots that appear after exclusion of all overlapping time slots from base time slot.
+
 You can use your own implementation of TimeSlot. Your class should implement TimeSlotInterface.
+
 Also you can use custom TimeSlotGenerator. Your class should implement TimeSlotGeneratorInterface.
