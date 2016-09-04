@@ -1,0 +1,17 @@
+{
+  "name": "v-matsuk/time-overlap-calculator",
+  "description": "Time overlap calculator",
+  "authors": [{
+      "name": "Vitaly Matsuk",
+      "email": "vitalymatsuk@gmail.com"
+  }],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-0" : {
+      "VM\\TimeOverlapCalculator" : "src"
+    }
+  }
+}
