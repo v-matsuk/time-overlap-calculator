@@ -2,6 +2,11 @@
 
 A lightweight library that helps to work with date/time overlapping.
 
+##Installation
+```
+$ composer require v-matsuk/time-overlap-calculator
+```
+
 ##Usage
 ```
 <?php
@@ -43,7 +48,5 @@ $freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
 );
 ```
 TimeSlotGenerator is used to generate new time slots that appear after exclusion of all overlapping time slots from base time slot.
-
 You can use your own implementation of TimeSlot. Your class should implement TimeSlotInterface.
-
 Also you can use custom TimeSlotGenerator. Your class should implement TimeSlotGeneratorInterface.

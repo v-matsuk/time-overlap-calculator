@@ -1,6 +1,8 @@
 {
   "name": "v-matsuk/time-overlap-calculator",
   "description": "Time overlap calculator",
+  "license": "MIT",
+  "keywords": ["period overlap", "time overlap", "php"],
   "authors": [{
       "name": "Vitaly Matsuk",
       "email": "vitalymatsuk@gmail.com"
@@ -8,6 +10,9 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
   },
   "autoload": {
     "psr-0" : {
