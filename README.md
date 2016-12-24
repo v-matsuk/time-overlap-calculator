@@ -48,5 +48,23 @@ $freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
 );
 ```
 TimeSlotGenerator is used to generate new time slots that appear after exclusion of all overlapping time slots from base time slot.
+
+### Merge overlapped time slots into single time slot
+```
+//will return array that contains two time slots:
+//from 2016-01-01 10:00 till 2016-01-01 16:00 and from 2016-01-01 19:00 till 2016-01-01 22:00
+$timeSlotGenerator = new TimeSlotGenerator();
+$freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
+    $timeSlotGenerator,
+    [
+        new TimeSlot(new \DateTime('2016-01-01 13:00'), new \DateTime('2016-01-01 16:00')),
+        new TimeSlot(new \DateTime('2016-01-01 11:00'), new \DateTime('2016-01-01 14:00')),
+        new TimeSlot(new \DateTime('2016-01-01 19:00'), new \DateTime('2016-01-01 22:00')),
+        new TimeSlot(new \DateTime('2016-01-01 10:00'), new \DateTime('2016-01-01 13:00')),
+    ]
+);
+```
+TimeSlotGenerator is used to generate new time slots that appear after merging of all overlapping time slots.
+
 You can use your own implementation of TimeSlot. Your class should implement TimeSlotInterface.
 Also you can use custom TimeSlotGenerator. Your class should implement TimeSlotGeneratorInterface.

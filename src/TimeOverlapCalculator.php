@@ -91,6 +91,46 @@ class TimeOverlapCalculator
     }
 
     /**
+     * Merge all overlapped time slots into single time slot
+     *
+     * @param TimeSlotGeneratorInterface $timeSlotGenerator
+     * @param TimeSlotInterface[]        $timeSlots
+     *
+     * @return TimeSlotInterface[]
+     */
+    public function mergeOverlappedTimeSlots(TimeSlotGeneratorInterface $timeSlotGenerator, array $timeSlots)
+    {
+        if (empty($timeSlots)) {
+            return [];
+        }
+
+        $timeSlots = $this->sortTimeSlotsByStartTime($timeSlots);
+        $mergedTimeSlots = [
+            $timeSlotGenerator->createTimeSlot($timeSlots[0]->getStart(), $timeSlots[0]->getEnd()),
+        ];
+        $headIndex = 0;
+
+        foreach ($timeSlots as $timeSlot) {
+            $headTimeSlot = $mergedTimeSlots[$headIndex];
+
+            if ($timeSlot->getStart() > $headTimeSlot->getEnd()) {
+                $mergedTimeSlots[] = $timeSlotGenerator->createTimeSlot(
+                    $timeSlot->getStart(),
+                    $timeSlot->getEnd()
+                );
+                $headIndex ++;
+            } elseif ($headTimeSlot->getEnd() < $timeSlot->getEnd()) {
+                $mergedTimeSlots[$headIndex] = $timeSlotGenerator->createTimeSlot(
+                    $headTimeSlot->getStart(),
+                    $timeSlot->getEnd()
+                );
+            }
+        }
+
+        return $mergedTimeSlots;
+    }
+
+    /**
      * @param TimeSlotInterface          $baseTimeSlot
      * @param TimeSlotInterface          $overlappingTimeSlot
      * @param TimeSlotGeneratorInterface $timeSlotGenerator
@@ -130,5 +170,27 @@ class TimeOverlapCalculator
         }
 
         return $freeTimeSlots;
+    }
+
+    /**
+     * @param TimeSlotInterface[] $timeSlots
+     *
+     * @return TimeSlotInterface[]
+     */
+    private function sortTimeSlotsByStartTime(array $timeSlots)
+    {
+        usort($timeSlots, function($a, $b) {
+           if ($a->getStart() < $b->getStart()) {
+               return -1;
+           }
+
+            if ($a->getStart() > $b->getStart()) {
+                return 1;
+            }
+
+            return 0;
+        });
+
+        return $timeSlots;
     }
 }

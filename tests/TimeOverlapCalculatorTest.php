@@ -150,4 +150,31 @@ class TimeOverlapCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('2016-09-01 15:00', $result[1]->getStart()->format('Y-m-d H:i'));
         $this->assertEquals('2016-09-01 16:30', $result[1]->getEnd()->format('Y-m-d H:i'));
     }
+
+    /**
+     * Tests for TimeOverlapCalculator::mergeOverlappedTimeSlots()
+     */
+    public function testMergeTimeSlots()
+    {
+        $timeSlotGenerator = new TimeSlotGenerator();
+
+        $mergedTimeSlots = $this->calculator->mergeOverlappedTimeSlots(
+            $timeSlotGenerator,
+            [
+                new TimeSlot(new \DateTime('2016-01-01 13:00'), new \DateTime('2016-01-01 16:00')),
+                new TimeSlot(new \DateTime('2016-01-01 11:00'), new \DateTime('2016-01-01 14:00')),
+                new TimeSlot(new \DateTime('2016-01-01 19:00'), new \DateTime('2016-01-01 22:00')),
+                new TimeSlot(new \DateTime('2016-01-01 10:00'), new \DateTime('2016-01-01 13:00')),
+            ]
+        );
+
+        $this->assertCount(2, $mergedTimeSlots);
+        $this->assertInstanceOf(TimeSlot::class, $mergedTimeSlots[0]);
+        $this->assertEquals('2016-09-01 10:00', $mergedTimeSlots[0]->getStart()->format('Y-m-d H:i'));
+        $this->assertEquals('2016-09-01 16:00', $mergedTimeSlots[0]->getEnd()->format('Y-m-d H:i'));
+
+        $this->assertInstanceOf(TimeSlot::class, $mergedTimeSlots[1]);
+        $this->assertEquals('2016-09-01 19:00', $mergedTimeSlots[1]->getStart()->format('Y-m-d H:i'));
+        $this->assertEquals('2016-09-01 22:30', $mergedTimeSlots[1]->getEnd()->format('Y-m-d H:i'));
+    }
 }
