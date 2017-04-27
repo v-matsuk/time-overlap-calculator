@@ -15,7 +15,7 @@
     "phpunit/phpunit": "4.0.*"
   },
   "autoload": {
-    "psr-0" : {
+    "psr-4" : {
       "VM\\TimeOverlapCalculator" : "src"
     }
   }
