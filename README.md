@@ -2,12 +2,12 @@
 
 A lightweight library that helps to work with date/time overlapping.
 
-##Installation
+## Installation
 ```
 $ composer require v-matsuk/time-overlap-calculator
 ```
 
-##Usage
+## Usage
 ```
 <?php
 
