@@ -1,7 +1,7 @@
 {
   "name": "v-matsuk/time-overlap-calculator",
   "description": "Time overlap calculator",
-  "license": "MIT",W
+  "license": "MIT",
   "keywords": ["period overlap", "time overlap", "php"],
   "authors": [{
       "name": "Vitaly Matsuk",
