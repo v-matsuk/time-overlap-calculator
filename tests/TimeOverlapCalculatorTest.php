@@ -175,6 +175,6 @@ class TimeOverlapCalculatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(TimeSlot::class, $mergedTimeSlots[1]);
         $this->assertEquals('2016-01-01 19:00', $mergedTimeSlots[1]->getStart()->format('Y-m-d H:i'));
-        $this->assertEquals('2016-01-01 22:30', $mergedTimeSlots[1]->getEnd()->format('Y-m-d H:i'));
+        $this->assertEquals('2016-01-01 22:00', $mergedTimeSlots[1]->getEnd()->format('Y-m-d H:i'));
     }
 }
