@@ -1,4 +1,7 @@
 # Time overlap calculator
+=========================
+
+[![Build Status](https://travis-ci.org/v-matsuk/time-overlap-calculator.svg?branch=master)](https://travis-ci.org/v-matsuk/time-overlap-calculator)
 
 A lightweight library that helps to work with date/time overlapping.
 
