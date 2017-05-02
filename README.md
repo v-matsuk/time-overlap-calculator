@@ -6,12 +6,12 @@
 A lightweight library that helps to work with date/time overlapping.
 
 ## Installation
-```
+```bash
 $ composer require v-matsuk/time-overlap-calculator
 ```
 
 ## Usage
-```
+```php
 <?php
 
 use VM\TimeOverlapCalculator\TimeOverlapCalculator;
@@ -30,17 +30,17 @@ $overlappingTimeSlot = new TimeSlot(
 );
 ```
 ### Check if two periods overlap
-```
+```php
 $isOverlap = $calculator->isOverlap($baseTimeSlot, $overlappingTimeSlot); //will return true
 ```
 ### Calculate size of overlapping and convert result into given time unit (seconds by default)
-```
+```php
 $resultInSeconds = $calculator->calculateOverlap($baseTimeSlot, $overlappingTimeSlot); //14400
 $resultInMinutes = $calculator->calculateOverlap($baseTimeSlot, $overlappingTimeSlot, TimeOverlapCalculator::TIME_UNIT_MINUTE); //240
 $resultInHours = $calculator->calculateOverlap($baseTimeSlot, $overlappingTimeSlot, TimeOverlapCalculator::TIME_UNIT_HOUR); //4
 ```
 ### Generate an array of non-overlapped time slots
-```
+```php
 //will return array that contains two time slots:
 //from 2016-01-01 08:00 till 2016-01-01 13:00 and from 2016-01-01 17:00 till 2016-01-01 20:00
 $timeSlotGenerator = new TimeSlotGenerator();
@@ -53,7 +53,7 @@ $freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
 TimeSlotGenerator is used to generate new time slots that appear after exclusion of all overlapping time slots from base time slot.
 
 ### Merge overlapped time slots into single time slot
-```
+```php
 //will return array that contains two time slots:
 //from 2016-01-01 10:00 till 2016-01-01 16:00 and from 2016-01-01 19:00 till 2016-01-01 22:00
 $timeSlotGenerator = new TimeSlotGenerator();
