@@ -19,8 +19,7 @@ class TimeSlotTest extends \PHPUnit_Framework_TestCase
         $startDate = new \DateTime('2017-01-01 10:00');
         $endDate = new \DateTime('2017-01-01 09:00');
 
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Time slot start time should be less than time slot end time');
+        $this->setExpectedException(\Exception::class);
 
         new TimeSlot($startDate, $endDate);
     }
@@ -30,8 +29,7 @@ class TimeSlotTest extends \PHPUnit_Framework_TestCase
         $startDate = new \DateTime('2017-01-01 10:00');
         $endDate = new \DateTime('2017-01-01 10:00');
 
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Time slot start time should be less than time slot end time');
+        $this->setExpectedException(\Exception::class);
 
         new TimeSlot($startDate, $endDate);
     }
