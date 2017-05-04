@@ -2,6 +2,7 @@
 =========================
 
 [![Build Status](https://travis-ci.org/v-matsuk/time-overlap-calculator.svg?branch=master)](https://travis-ci.org/v-matsuk/time-overlap-calculator)
+[![codecov](https://codecov.io/gh/v-matsuk/time-overlap-calculator/branch/master/graph/badge.svg)](https://codecov.io/gh/v-matsuk/time-overlap-calculator)
 
 A lightweight library that helps to work with date/time overlapping.
 

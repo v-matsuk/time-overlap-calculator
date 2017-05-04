@@ -117,6 +117,22 @@ class TimeOverlapCalculatorTest extends \PHPUnit_Framework_TestCase
             new TimeSlot(new \DateTime('2016-09-01 08:00'), new \DateTime('2016-09-01 20:00'))
         );
         $this->assertEquals(7 * 60 * 60, $result);
+
+        //the first period is inside the second (minutes)
+        $result = $this->calculator->calculateOverlap(
+            $baseTimeSlot,
+            new TimeSlot(new \DateTime('2016-09-01 08:00'), new \DateTime('2016-09-01 20:00')),
+            TimeOverlapCalculator::TIME_UNIT_MINUTE
+        );
+        $this->assertEquals(7 * 60, $result);
+
+        //the first period is inside the second (hours)
+        $result = $this->calculator->calculateOverlap(
+            $baseTimeSlot,
+            new TimeSlot(new \DateTime('2016-09-01 08:00'), new \DateTime('2016-09-01 20:00')),
+            TimeOverlapCalculator::TIME_UNIT_HOUR
+        );
+        $this->assertEquals(7, $result);
     }
 
     /**
@@ -162,7 +178,7 @@ class TimeOverlapCalculatorTest extends \PHPUnit_Framework_TestCase
             $timeSlotGenerator,
             [
                 new TimeSlot(new \DateTime('2016-01-01 13:00'), new \DateTime('2016-01-01 16:00')),
-                new TimeSlot(new \DateTime('2016-01-01 11:00'), new \DateTime('2016-01-01 14:00')),
+                new TimeSlot(new \DateTime('2016-01-01 11:00'), new \DateTime('2016-01-01 12:00')),
                 new TimeSlot(new \DateTime('2016-01-01 19:00'), new \DateTime('2016-01-01 22:00')),
                 new TimeSlot(new \DateTime('2016-01-01 10:00'), new \DateTime('2016-01-01 13:00')),
             ]
