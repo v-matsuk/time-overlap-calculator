@@ -58,7 +58,7 @@ TimeSlotGenerator is used to generate new time slots that appear after exclusion
 //will return array that contains two time slots:
 //from 2016-01-01 10:00 till 2016-01-01 16:00 and from 2016-01-01 19:00 till 2016-01-01 22:00
 $timeSlotGenerator = new TimeSlotGenerator();
-$freeTimeSlots = $calculator->getNonOverlappedTimeSlots(
+$freeTimeSlots = $calculator->mergeOverlappedTimeSlots(
     $timeSlotGenerator,
     [
         new TimeSlot(new \DateTime('2016-01-01 13:00'), new \DateTime('2016-01-01 16:00')),

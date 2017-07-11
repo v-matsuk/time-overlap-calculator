@@ -5,20 +5,20 @@ namespace VM\TimeOverlapCalculator\Entity;
 class TimeSlot implements TimeSlotInterface
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $start;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $end;
 
     /**
-     * @param \DateTime $start
-     * @param \DateTime $end
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
      */
-    public function __construct(\DateTime $start, \DateTime $end)
+    public function __construct(\DateTimeInterface $start, \DateTimeInterface $end)
     {
         $this->start = $start;
         $this->end = $end;
@@ -27,7 +27,7 @@ class TimeSlot implements TimeSlotInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getStart()
     {
@@ -35,7 +35,7 @@ class TimeSlot implements TimeSlotInterface
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getEnd()
     {

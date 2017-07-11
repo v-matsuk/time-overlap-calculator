@@ -5,12 +5,12 @@ namespace VM\TimeOverlapCalculator\Entity;
 interface TimeSlotInterface
 {
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getStart();
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
     public function getEnd();
 }

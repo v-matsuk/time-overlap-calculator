@@ -5,10 +5,10 @@ namespace VM\TimeOverlapCalculator\Generator;
 interface TimeSlotGeneratorInterface
 {
     /**
-     * @param \DateTime $start
-     * @param \DateTime $end
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
      *
      * @return TimeSlotInterface
      */
-    public function createTimeSlot(\DateTime $start, \DateTime $end);
+    public function createTimeSlot(\DateTimeInterface $start, \DateTimeInterface $end);
 }
